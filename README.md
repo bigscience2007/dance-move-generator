@@ -1,3 +1,6 @@
+[Run the app](http://bigscience.github.io/dance_move_generator)
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/bigscience2007/dance-move-generator/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
