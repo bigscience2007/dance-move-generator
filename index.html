@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <style>    
+       div.movebox {
+    background-color: black;
+    color: white;
+    font-size:60px;
+    margin: 20px 0 20px 0;
+    padding: 20px;
+    } 
+  </style>
+  </head>
+  
+  <body>
+  <!-- use common header file-->	
+<?php include("header.php"); ?>  
+
+<p>Click "Start" to generate a random dance move every 15 seconds</p> <br>
+    <button type="button" id="start" >Start</button><br>
+    <button type="button" id="stop" >Stop</button><br>
+    <button type="button" id="pause" >Pause</button><br>
+    
+    <div class = 'movebox' id = "movebox1">Ready?</div>
+    <div class = 'movebox' id = "timerbox">Elapsed Time</div>
+<!--
+    <form action="action.php" method="post">
+    <p>Your name: <input type="text" name="name" /></p>
+    <p>Your age: <input type="text" name="age" /></p>
+    <p><input type="submit" /></p>   
+    </form>
+-->    
+    <script type = "text/javascript">
+     var begintime = null;
+     var now = null;
+     var seconds = null 
+     var int = null
+     var pausetime = 5000
+     var sessiontime = 0
+     
+     function startmoves() {
+     pickmove()
+     int = setInterval(pickmove, 15000)
+     sec = setInterval(changetime,1000)   
+     }
+        
+    function warning(){
+     document.getElementById('movebox1').style.backgroundColor = 'red';
+     var audio = new Audio('gameover.wav');
+     audio.play();
+     }
+      
+        
+    function pickmove(){
+     var moves = ["20s Charleston", "30s Charleston", "Slip Slop", "TOBA break", "Half Break", "Drunken Sailor", "Boogie Drop",
+                  "Savoy Kicks", "Sailor Kicks", "Triple Steps", "Running Man", "Flying Charleston", "Box Step", "Reject Step",
+                  "Lowdown (Kerry)", "Falling Off the Log", "Scissor Kicks", "Kickball Change", "Side steps","Shuffle"];
+    
+     var random_move = moves[Math.floor(Math.random()*moves.length)];
+    
+     document.getElementById('movebox1').style.backgroundColor = 'black'; 
+     document.getElementById('movebox1').innerHTML =  random_move; 
+     delay = setTimeout(warning, 12000);
+     }
+    
+
+     function changetime(){
+      now = new Date();
+      var difference = (now-begintime+sessiontime);
+      var minutes = Math.floor(difference/1000/60);
+      seconds = Math.floor((difference-(minutes*60*1000))/1000)
+         function pad(seconds) {
+             return (seconds < 10) ? ("0" + seconds) : seconds;
+             }
+       document.getElementById('timerbox').innerHTML =  "Elapsed Time  " + minutes + ":"+ pad(seconds) ;
+       }     
+        
+        
+     function getbegintime() {
+       begintime = new Date(); 
+       }
+
+        
+    document.getElementById("start").addEventListener("click", function(){
+            startmoves();
+            getbegintime();
+            changetime();
+            });
+    
+    document.getElementById("stop").addEventListener("click", function(){
+        window.clearInterval(int);
+        window.clearInterval(sec);
+        window.clearTimeout(delay);
+        });
+ 
+    document.getElementById("pause").addEventListener("click", function(){
+        sessiontime=now-begintime+sessiontime
+        window.clearInterval(int);
+        window.clearInterval(sec);
+        window.clearTimeout(delay);
+        });
+     
+    document.getElementById("PHPtest").addEventListener("click", function(){
+        location.href = "phptest.html"});
+    </script>
+  </body>
+</html>
+
