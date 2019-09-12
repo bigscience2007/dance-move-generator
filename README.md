@@ -1,4 +1,4 @@
-[Run the app](http://bigscience.github.io/dance-move-generator)
+[Run the app](http://bigscience2007.github.io/dance-move-generator)
 
 
 ## Welcome to GitHub Pages
