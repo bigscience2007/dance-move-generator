@@ -2,34 +2,63 @@
 <html>
  <head>
  <style>    
-       div.movebox {
+    div.movebox {
     background-color: black;
     color: white;
     font-size:60px;
     margin: 20px 0 20px 0;
     padding: 20px;
+	text-align: center
     } 
+	
+	div.tagline {
+	text-align:center;
+	font-size:20px;
+	}
+	
+    div.banner { 
+	text-align:center;
+	font-size:60px;
+    margin: 20px 0 20px 0;
+    padding: 20px
+	}
+	
+	div.buttons{
+	text-align:center;
+	padding:5px;
+	margin:5px
+	}
+	
+	.button {
+	font-size:20px;
+	text-align:center;
+	margin:5px
+	}
   </style>
   </head>
   
   <body>
-  <!-- use common header file-->	
-<?php include("header.php"); ?>  
 
+  
+<div class = "banner"> 
+Random Dance Move Generator
+</div>
+
+<div class = "tagline"> 
 <p>Click "Start" to generate a random dance move every 15 seconds</p> <br>
-    <button type="button" id="start" >Start</button><br>
-    <button type="button" id="stop" >Stop</button><br>
-    <button type="button" id="pause" >Pause</button><br>
+</div>
+
+<div class = "buttons">   
+   <button class="button" id="start" >Start</button><br>
+    <button class="button" id="stop" >Stop</button><br>
+    <button class="button" id="pause" >Pause</button><br>
+</div>
     
     <div class = 'movebox' id = "movebox1">Ready?</div>
     <div class = 'movebox' id = "timerbox">Elapsed Time</div>
-<!--
-    <form action="action.php" method="post">
-    <p>Your name: <input type="text" name="name" /></p>
-    <p>Your age: <input type="text" name="age" /></p>
-    <p><input type="submit" /></p>   
-    </form>
--->    
+
+
+   
     <script type = "text/javascript">
      var begintime = null;
      var now = null;
